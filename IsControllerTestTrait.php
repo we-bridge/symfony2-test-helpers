@@ -7,24 +7,28 @@ trait IsControllerTestTrait
     use ClosesConnectionsAfterTestTrait;
     use ReflectsAndCleansPropertiesAfterTestTrait;
 
-    private $client;
-    private $crawler;
+    protected $client;
+    protected $crawler;
 
     public function setUp()
     {
-        $this->client = static::createClient();
+        $this->client = $this->getClient();
 
         $fixtureExecutor = $this->loadFixtures($this->fixturelist);
         $this->em = $fixtureExecutor->getObjectManager();
         $this->fixtures = $fixtureExecutor->getReferenceRepository();
     }
 
-    private function openPage($page)
+    protected function getClient(){
+        return static::createClient();
+    }
+
+    protected function openPage($page)
     {
         $this->crawler = $this->client->request('GET', $page);
     }
 
-    private function assertPageOpenedSuccessfully()
+    protected function assertPageOpenedSuccessfully()
     {
         $this->assertTrue(
             $this->client->getResponse()->isSuccessful(),
@@ -35,19 +39,19 @@ trait IsControllerTestTrait
         );
     }
 
-    private function assertContainsRecordPropertiesBlock()
+    protected function assertContainsRecordPropertiesBlock()
     {
         $this->assertEquals(1, $this->crawler->filter('.record_properties')->count());
     }
 
-    private function getFirstElementByTestName($name)
+    protected function getFirstElementByTestName($name)
     {
         return $this->crawler
             ->filter("[data-for-test-name='$name']")
             ->eq(0);
     }
 
-    private function assertFormRedirect()
+    protected function assertFormRedirect()
     {
         // we check that we got a redirection
         $this->assertEquals(
@@ -57,13 +61,13 @@ trait IsControllerTestTrait
         );
     }
 
-    private function clickFirstLink($name)
+    protected function clickFirstLink($name)
     {
         $link = $this->getFirstElementByTestName($name)->link();
         $this->crawler = $this->client->click($link);
     }
 
-    private function followRedirect()
+    protected function followRedirect()
     {
         $this->crawler = $this->client->followRedirect();
     }
