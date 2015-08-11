@@ -1,6 +1,6 @@
 <?php
 
-namespace AllanSimon\TestHelpers;
+namespace WeBridge\TestHelpers;
 
 trait ReflectsAndCleansPropertiesAfterTestTrait
 {

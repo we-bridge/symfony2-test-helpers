@@ -1,5 +1,5 @@
 {
-    "name": "allan-simon/functionnal-test-helpers",
+    "name": "we-bridge/functionnal-test-helpers",
     "license": "MIT",
     "description": "A suite of helpers traits to help you writing functionnal tests with phpunit for symfony2",
     "type": "library",
@@ -10,10 +10,11 @@
     },
     "authors": [
         {"name" : "Conny Brunnkvist"},
-        {"name" : "Allan Simon"}
+        {"name" : "Allan Simon"},
+		{"name" : "Thomas Barthelemy"}
     ],
     "autoload": {
-        "psr-0": { "AllanSimon\\TestHelpers": "" }
+        "psr-0": { "WeBridge\\TestHelpers": "" }
     },
-    "target-dir" : "AllanSimon/TestHelpers"
+    "target-dir" : "WeBridge/TestHelpers"
 }
