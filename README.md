@@ -14,13 +14,13 @@ add in your `composer.json` :
 ``` json
     "require-dev": {
         ...
-        "allan-simon/functionnal-test-helpers": "*",
+        "we-bridge/functionnal-test-helpers": "*",
         "liip/functional-test-bundle": "~1.0",
         ...
     }
 ```
 
-Then the classes are accessible from the namespace `AllanSimon\TestHelpers`
+Then the classes are accessible from the namespace `WeBridge\TestHelpers`
 
 ## Documentation:
 
@@ -81,7 +81,7 @@ all these assets use the property `$this->responseJson`, which is populated by
 
 namespace YourBundle\Tests\Controller;
 
-use AllanSimon\TestHelpers\ApiHelpersTrait;
+use WeBridge\TestHelpers\ApiHelpersTrait;
 use Liip\FunctionalTestBundle\Test\WebTestCase;
 
 class AnalystControllerTest extends WebTestCase
@@ -111,7 +111,7 @@ class AnalystControllerTest extends WebTestCase
         $this->performGET('/api/analysts');
         $this->assertBadRequestError();
     }
-    
+
     public function testGetAnalystsWithdValidSortReturnListAnalysts()
     {
         //TODO replace by phpunit stuff to feed with data
@@ -139,7 +139,7 @@ class AnalystControllerTest extends WebTestCase
 namespace YourBundle\Tests\Controller;
 
 use Liip\FunctionalTestBundle\Test\WebTestCase;
-use AllanSimon\TestHelpers\IsControllerTestTrait;
+use WeBridge\TestHelpers\IsControllerTestTrait;
 
 class CommentsControllerTest extends WebTestCase
 {
